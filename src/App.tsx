@@ -26,7 +26,7 @@ function App() {
       <header className="bg-primary shadow-sm">
         <div className="max-w-300 mx-auto px-6 py-5">
           <h1 className="text-white text-xl font-medium tracking-wide">
-            User Directory
+            Lista de Usuários
           </h1>
         </div>
       </header>
