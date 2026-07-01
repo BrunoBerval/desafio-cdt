@@ -1,3 +1,9 @@
+/**
+ * Testes unitários do hook useUsers.
+ * O módulo de serviço é mockado para isolar o hook da camada de rede,
+ * cobrindo os três estados possíveis: loading inicial, sucesso e erro.
+ */
+
 import { renderHook, waitFor } from '@testing-library/react'
 import { useUsers } from '../../../src/hooks/useUsers'
 import { fetchUsers } from '../../../src/services/users'
