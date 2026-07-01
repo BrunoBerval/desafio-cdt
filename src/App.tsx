@@ -8,6 +8,7 @@ import { SearchBar } from './components/users/SearchBar'
 import { UserDetailsModal } from './components/users/UserDetailsModal'
 import { Navbar } from './components/shared/Navbar'
 import { NotExistModal } from './components/shared/NotExistModal'
+import { Pagination } from './components/shared/Pagination'
 import type { User } from './types/users'
 
 /**
@@ -61,6 +62,11 @@ function App() {
             <UserList
               users={filteredUsers}
               onUserClick={setSelectedUser}
+            />
+            <Pagination
+              currentPage={1}
+              onPrevious={() => openNotExist('Paginação')}
+              onNext={() => openNotExist('Paginação')}
             />
           </div>
         )}

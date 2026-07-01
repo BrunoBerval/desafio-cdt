@@ -24,7 +24,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <header className="bg-primary shadow-sm">
+    <header className="bg-[#0D1424] shadow-sm">
       <div className="max-w-300 mx-auto px-6 py-3 flex items-center justify-between">
 
         <img
