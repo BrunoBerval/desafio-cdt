@@ -1,0 +1,15 @@
+/* O Vite 8 usa verbatimModuleSyntax: true e module: esnext, que são incompatíveis com Jest em modo CommonJS. 
+O tsconfig.test.json herda tudo do app mas sobrescreve só o necessário para os testes rodarem. */
+
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src", "tests"]
+}
