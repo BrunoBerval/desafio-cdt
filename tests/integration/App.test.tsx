@@ -9,6 +9,12 @@ import userEvent from '@testing-library/user-event'
 import App from '../../src/App'
 import { fetchUsers } from '../../src/services/users'
 
+/**
+ * Testes de integração do componente App.
+ * Renderizam a árvore completa de componentes com o serviço de API mockado,
+ * simulando o fluxo real do usuário: carregamento, busca, abertura e fechamento do modal.
+ */
+
 jest.mock('../../src/services/users')
 
 const mockedFetchUsers = fetchUsers as jest.MockedFunction<typeof fetchUsers>
@@ -97,7 +103,8 @@ describe('App — integration', () => {
     expect(within(dialog).getByText('Sincere@april.biz')).toBeInTheDocument()
     expect(within(dialog).getByText('1-770-736-8031')).toBeInTheDocument()
     expect(within(dialog).getByText('Romaguera-Crona')).toBeInTheDocument()
-    expect(within(dialog).getByText('Gwenborough')).toBeInTheDocument()
+    // Cidade agora é exibida junto ao CEP: "Gwenborough — 92998-3874"
+    expect(within(dialog).getByText(/Gwenborough/i)).toBeInTheDocument()
   })
 
   it('closes the modal when the close button is clicked', async () => {

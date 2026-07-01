@@ -1,7 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { UserCard } from '../../../src/components/users/UserCard'
+import { UserRow } from '../../../src/components/users/UserRow'
 import type { User } from '../../../src/types/users'
+
+/**
+ * Testes unitários do componente UserRow.
+ * Verificam se a linha exibe nome e username corretamente
+ * e se o callback onClick é chamado ao clicar.
+ */
 
 const mockUser: User = {
   id: 1,
@@ -24,17 +30,17 @@ const mockUser: User = {
   },
 }
 
-describe('UserCard', () => {
-  it('renders user name and email', () => {
-    render(<UserCard user={mockUser} onClick={() => {}} />)
+describe('UserRow', () => {
+  it('renders user name and username', () => {
+    render(<UserRow user={mockUser} onClick={() => {}} />)
     expect(screen.getByText('Leanne Graham')).toBeInTheDocument()
-    expect(screen.getByText('Sincere@april.biz')).toBeInTheDocument()
+    expect(screen.getByText('@Bret')).toBeInTheDocument()
   })
 
-  it('calls onClick when the card is clicked', async () => {
+  it('calls onClick when the row is clicked', async () => {
     const user = userEvent.setup()
     const handleClick = jest.fn()
-    render(<UserCard user={mockUser} onClick={handleClick} />)
+    render(<UserRow user={mockUser} onClick={handleClick} />)
     await user.click(screen.getByRole('button'))
     expect(handleClick).toHaveBeenCalledTimes(1)
   })

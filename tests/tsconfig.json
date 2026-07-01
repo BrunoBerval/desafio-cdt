@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig.test.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["**/*", "../src/**/*"]
+}
