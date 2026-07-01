@@ -1,3 +1,9 @@
+/**
+ * Testes unitários do componente SearchBar.
+ * Verificam se o campo exibe o valor recebido via prop
+ * e se o callback onChange é disparado com o texto digitado pelo usuário.
+ */
+
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { SearchBar } from '../../../src/components/users/SearchBar'

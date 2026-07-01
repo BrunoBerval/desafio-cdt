@@ -32,10 +32,10 @@ const mockUsers: User[] = [
 
 describe('useUsers', () => {
   it('returns loading: true on initial render', () => {
-    mockedFetchUsers.mockResolvedValue(mockUsers)
-    const { result } = renderHook(() => useUsers())
-    expect(result.current.loading).toBe(true)
-  })
+  mockedFetchUsers.mockReturnValue(new Promise(() => {}))
+  const { result } = renderHook(() => useUsers())
+  expect(result.current.loading).toBe(true)
+})
 
   it('returns users after successful fetch', async () => {
     mockedFetchUsers.mockResolvedValue(mockUsers)

@@ -1,3 +1,9 @@
+/**
+ * Testes unitários do componente UserCard.
+ * Verificam isoladamente se o card exibe corretamente nome e email do usuário
+ * e se o callback onClick é chamado ao clicar no botão.
+ */
+
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { UserCard } from '../../../src/components/users/UserCard'
