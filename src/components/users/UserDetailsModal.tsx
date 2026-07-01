@@ -55,6 +55,19 @@ function DetailRow({
   )
 }
 
+/**
+ * Modal de detalhes do usuário.
+ *
+ * Estados internos:
+ * - companyExpanded: controla a exibição do slogan e ramo da empresa.
+ * - mapOpen: controla a visibilidade do MapModal com as coordenadas do usuário.
+ *   O UserDetailsModal permanece visível por baixo do mapa (z-40) enquanto
+ *   o MapModal renderiza em z-50 — o usuário pode fechar o mapa e retornar
+ *   aos detalhes sem perder o contexto.
+ *
+ * Fecha com ESC ou clique no backdrop.
+ * Ações de CRUD (Editar/Excluir) chamam onNotExist pois ainda não implementadas.
+ */
 export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModalProps) {
   const [companyExpanded, setCompanyExpanded] = useState(false)
   const [mapOpen, setMapOpen] = useState(false)
@@ -95,6 +108,7 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
               <FiX size={20} />
             </button>
 
+            {/* Header */}
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-full bg-background-alt flex items-center justify-center shrink-0">
                 <FiUser className="text-primary" size={22} />
@@ -110,6 +124,7 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
               </div>
             </div>
 
+            {/* CRUD actions */}
             <div className="flex gap-2 mb-6">
               <button
                 onClick={() => onNotExist('Editar Usuário')}
@@ -130,22 +145,25 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
             <div className="border-t border-border mb-6" />
 
             <div className="flex flex-col gap-5">
+
+              {/* Email */}
               <DetailRow icon={<FiMail size={16} />} label="Email">
                 <p className="text-text-primary text-sm font-medium break-all">
                   {user.email}
                 </p>
               </DetailRow>
 
+              {/* Phone */}
               <DetailRow icon={<FiPhone size={16} />} label="Telefone">
                 <p className="text-text-primary text-sm font-medium">
                   {user.phone}
                 </p>
               </DetailRow>
 
+              {/* Website */}
               <DetailRow icon={<FiExternalLink size={16} />} label="Website">
                 
-                <a
-                  href={`https://${user.website}`}
+                <a  href={`https://${user.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary text-sm font-medium hover:underline"
@@ -154,6 +172,7 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
                 </a>
               </DetailRow>
 
+              {/* Company */}
               <DetailRow icon={<FiBriefcase size={16} />} label="Empresa">
                 <div className="flex items-center justify-between gap-2">
                   <p className="text-text-primary text-sm font-medium">
@@ -185,20 +204,27 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
                 )}
               </DetailRow>
 
-              <DetailRow icon={<FiMapPin size={16} />} label="Cidade">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-text-primary text-sm font-medium">
-                    {user.address.city}
-                  </p>
+              {/* Full address + map button */}
+              <DetailRow icon={<FiMapPin size={16} />} label="Endereço">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-text-primary text-sm font-medium">
+                      {user.address.street}, {user.address.suite}
+                    </p>
+                    <p className="text-text-secondary text-xs mt-0.5">
+                      {user.address.city} — {user.address.zipcode}
+                    </p>
+                  </div>
                   <button
                     onClick={() => setMapOpen(true)}
-                    className="shrink-0 flex items-center gap-1 text-xs text-primary hover:text-primary-dark border border-primary/30 hover:border-primary px-2 py-1 rounded-md transition-colors duration-200 cursor-pointer"
+                    className="shrink-0 flex items-center gap-1 text-xs text-primary hover:text-primary-dark border border-primary/30 hover:border-primary px-2 py-1 rounded-md transition-colors duration-200 cursor-pointer mt-0.5"
                   >
                     <FiMap size={13} />
                     Ver no mapa
                   </button>
                 </div>
               </DetailRow>
+
             </div>
           </div>
         </div>

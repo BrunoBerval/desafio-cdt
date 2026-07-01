@@ -13,7 +13,6 @@ interface UserCardProps {
   onClick: () => void
 }
 
-
 export function UserCard({ user, onClick }: UserCardProps) {
   return (
     <button
@@ -24,11 +23,16 @@ export function UserCard({ user, onClick }: UserCardProps) {
         <div className="w-10 h-10 rounded-full bg-background-alt flex items-center justify-center">
           <FiUser className="text-primary" size={18} />
         </div>
-        <h2 className="text-text-primary font-medium text-base">{user.name}</h2>
+        <div className="min-w-0">
+          <h2 className="text-text-primary font-medium text-base leading-tight">
+            {user.name}
+          </h2>
+          <p className="text-text-secondary text-xs">@{user.username}</p>
+        </div>
       </div>
       <div className="flex items-center gap-2">
         <FiMail size={14} className="text-text-secondary" />
-        <span className="text-text-secondary text-sm">{user.email}</span>
+        <span className="text-text-secondary text-sm truncate">{user.email}</span>
       </div>
     </button>
   )
