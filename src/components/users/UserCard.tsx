@@ -27,12 +27,12 @@ export function UserCard({ user, onClick }: UserCardProps) {
           <h2 className="text-text-primary font-medium text-base leading-tight">
             {user.name}
           </h2>
-          <p className="text-text-secondary text-xs">@{user.username}</p>
+          <p className="text-accent text-xs">@{user.username}</p>
         </div>
       </div>
       <div className="flex items-center gap-2">
         <FiMail size={14} className="text-text-secondary" />
-        <span className="text-text-secondary text-sm truncate">{user.email}</span>
+        <span className="text-text-secondary text-sm truncate lowercase">{user.email}</span>
       </div>
     </button>
   )

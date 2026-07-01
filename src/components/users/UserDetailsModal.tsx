@@ -120,7 +120,7 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
                 >
                   {user.name}
                 </h2>
-                <p className="text-text-secondary text-xs">@{user.username}</p>
+                <p className="text-accent text-xs">@{user.username}</p>
               </div>
             </div>
 
@@ -148,7 +148,7 @@ export function UserDetailsModal({ user, onClose, onNotExist }: UserDetailsModal
 
               {/* Email */}
               <DetailRow icon={<FiMail size={16} />} label="Email">
-                <p className="text-text-primary text-sm font-medium break-all">
+                <p className="text-text-primary text-sm font-medium break-all lowercase">
                   {user.email}
                 </p>
               </DetailRow>
