@@ -34,7 +34,7 @@ Aplicação React que consome a API pública JSONPlaceholder, permitindo listar,
 
 ## Sobre o Projeto
 
-Aplicação desenvolvida como parte do processo seletivo da CDT Software para a vaga de **Desenvolvedor Front-End Júnior**.
+Aplicação desenvolvida como parte do processo seletivo da CDT Software para a vaga de **Desenvolvedor Júnior**.
 
 O objetivo foi construir um diretório de usuários consumindo a [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users), com foco em organização de código, componentização, tipagem TypeScript e qualidade de interface.
 
